@@ -174,17 +174,44 @@ implementer完成后，调用code-reviewer进行审查 按照如下格式调用:
 - code-reviewer 没发现问题、或仅发现可自动修复的小问题（导入缺失、命名不规范、格式错误）→ 小问题由 code-reviewer 直接修复 → 进入下一步骤
 - code-reviewer 发现需要重新设计的大问题（架构违反、范围漂移、不符合方案规划）→ 退回 implementer 修复，修复完再次审查，直到通过 → 进入下一步骤
 
-## 步骤7：用户审核
-- 所有任务完成后、告诉用户，让用户进行审核，此时添加一份固定话术”当前任务以完成，请问是否有任何问题？如果没有，请告诉我，我会合并主干”
-- 用户表达了”有”的意图，接下来的所有流程按照`REWORK_GUIDE.md`来走。
-- 用户表达了”没有”的意图，则直接合并分支。
+## 步骤7：推送分支 + 创建 GitHub PR
 
-## 步骤8 完工后更新项目状态.md
-调用`pj-log`SKILL来对`.claude/项目状态.md`文件进行更新。
+所有审查通过后，推送 feature 分支到 GitHub：
 
 ```bash
-./gradlew assembleDebug --quiet   # 编译确认
+git push -u origin feat/xxx
+```
+
+然后用 GitHub CLI 创建 PR：
+
+```bash
+gh pr create \
+  --title “feat: xxx功能” \
+  --body “$(cat <<'EOF'
+## 做了什么
+- ...
+
+## 验证方式
+- ...
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+EOF
+)”
+```
+
+创建 PR 后，将 PR 链接告知用户，由用户在 GitHub 上 Review 确认。
+
+- 用户要求修改 → 在同一个 feature 分支上修改 → `git push` 更新 PR → 用户重新 Review
+- 用户确认没问题 → 用户在 GitHub 上点击 Merge PR
+
+## 步骤8：同步主干 + 更新项目状态
+
+用户在 GitHub 上 Merge PR 后，Leader 执行：
+
+```bash
 git checkout master
-git merge feat/xxx --no-ff
+git pull origin master
 git branch -d feat/xxx
 ```
+
+然后调用 `pj-log` skill 更新 `.claude/项目状态.md`。
