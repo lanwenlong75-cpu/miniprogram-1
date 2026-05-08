@@ -1,0 +1,73 @@
+{
+  "dangerouslySkipPermissions": true,
+  "allowedPaths": [
+    "CLAUDE.md",
+    ".claude/settings.local.json"
+  ],
+  "permissions": {
+    "allow": [
+      "Edit(.claude)",
+      "Write(.claude)",
+      "Edit(CLAUDE.md)",
+      "Write(CLAUDE.md)",
+      "Edit(项目状态.md)",
+      "Write(项目状态.md)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOOK_AUDIO_START}}"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOOK_EVOLUTION}}"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"{{PROJECT_ROOT}}/.claude/hooks/SessionStart-read-state.sh\"",
+            "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "bash \"{{PROJECT_ROOT}}/.claude/hooks/SessionStart-read-context.sh\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOOK_AUDIO_STOP}}"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOOK_WARNING}}"
+          }
+        ]
+      }
+    ]
+  }
+}
