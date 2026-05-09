@@ -1,4 +1,3 @@
-const app = getApp();
 const recipes = require('../../data/recipes');
 const { matchRecipes } = require('../../utils/recipe-matcher');
 
@@ -11,6 +10,7 @@ Page({
   },
 
   onLoad() {
+    const app = getApp();
     const selectedIngredients = app.globalData.selectedIngredients || [];
 
     // 无已选食材，显示空状态

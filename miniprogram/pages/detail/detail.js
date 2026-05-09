@@ -1,4 +1,3 @@
-const app = getApp();
 const recipes = require('../../data/recipes');
 
 Page({
@@ -10,6 +9,7 @@ Page({
   },
 
   onLoad(options) {
+    const app = getApp();
     const id = options && options.id;
     if (!id) {
       this.setData({ loaded: true, notFound: true });

@@ -5,7 +5,7 @@ var includes = function(list, item) {
   }
   return false;
 }
-module.exports = { includes: includes };
+module.exports.includes = includes;
 </wxs>
 
 <view class="page-wrap">
