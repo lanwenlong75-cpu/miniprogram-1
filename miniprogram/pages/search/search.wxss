@@ -1,0 +1,176 @@
+/** search.wxss **/
+/* T5: 搜索结果页 —— 复用 T3 暖色调体系 */
+/* 背景: #FFF8F0 暖白      */
+/* 主色: #FF8C42 暖橙      */
+/* 文字: #4A3B32 深棕灰    */
+/* 辅色: #8C7A6B 中棕      */
+/* 分割: #EDE6DD 暖灰      */
+/* 绿色(已有/100%): #5B8C5A */
+/* 淡黄(非100%匹配): #E8A840 */
+
+.page-wrap {
+  padding: 0 32rpx 48rpx;
+  background: #FFF8F0;
+  min-height: 100vh;
+}
+
+/* ── 空状态 ── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 200rpx;
+}
+
+.empty-emoji {
+  font-size: 96rpx;
+  margin-bottom: 32rpx;
+}
+
+.empty-text {
+  font-size: 30rpx;
+  color: #8C7A6B;
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 48rpx;
+  padding: 0 40rpx;
+}
+
+.back-btn {
+  width: 320rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #FF8C42;
+  color: #FFFFFF;
+  font-size: 30rpx;
+  font-weight: 600;
+  border-radius: 44rpx;
+  text-align: center;
+}
+
+/* ── 顶部状态栏 ── */
+.result-header {
+  padding: 32rpx 0 24rpx;
+}
+
+.result-count {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #4A3B32;
+}
+
+/* ── 菜谱卡片列表 ── */
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.recipe-card {
+  display: flex;
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 16rpx rgba(74, 59, 50, 0.08);
+}
+
+/* ── 封面占位 ── */
+.card-cover {
+  width: 200rpx;
+  min-height: 200rpx;
+  background: #F5EDE0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cover-emoji {
+  font-size: 56rpx;
+}
+
+/* ── 卡片内容 ── */
+.card-body {
+  flex: 1;
+  padding: 20rpx 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+  min-width: 0;
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #4A3B32;
+  line-height: 1.4;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.card-tag {
+  font-size: 22rpx;
+  color: #8C7A6B;
+  background: #F5EDE0;
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+/* ── 匹配度徽章 ── */
+.match-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 24rpx;
+  font-weight: 600;
+  padding: 6rpx 20rpx;
+  border-radius: 24rpx;
+}
+
+.match-full {
+  background: #E8F5E8;
+  color: #5B8C5A;
+}
+
+.match-partial {
+  background: #FDF2E0;
+  color: #E8A840;
+}
+
+/* ── 食材明细 ── */
+.ingredient-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+
+.detail-label {
+  font-size: 24rpx;
+  color: #8C7A6B;
+}
+
+.ingredients-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8rpx;
+}
+
+.ingredient-item {
+  font-size: 22rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 16rpx;
+}
+
+.ingredient-have {
+  background: #E8F5E8;
+  color: #5B8C5A;
+}
+
+.ingredient-miss {
+  background: #F0EDE8;
+  color: #B5A89C;
+}

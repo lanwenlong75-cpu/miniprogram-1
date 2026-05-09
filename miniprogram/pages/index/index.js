@@ -71,5 +71,11 @@ Page({
       selected.splice(index, 1);
       this.setData({ selectedIngredients: selected });
     }
+  },
+
+  onSearchRecipes() {
+    const app = getApp();
+    app.globalData.selectedIngredients = this.data.selectedIngredients.map(i => i.name);
+    wx.navigateTo({ url: '/pages/search/search' });
   }
 });

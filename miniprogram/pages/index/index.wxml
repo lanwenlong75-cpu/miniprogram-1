@@ -80,6 +80,7 @@
     <button
       class="search-btn {{selectedIngredients.length === 0 ? 'btn-disabled' : 'btn-enabled'}}"
       disabled="{{selectedIngredients.length === 0}}"
+      bindtap="onSearchRecipes"
     >
       查找菜谱
     </button>
