@@ -3,18 +3,19 @@ const ingredientTags = require('../../data/ingredient-tags');
 
 Page({
   data: {
-    frequentTags: [],
-    moreTags: [],
+    tagGroups: [],
     selectedIngredients: [],
-    inputValue: '',
-    showMore: false
+    inputValue: ''
   },
 
   onLoad() {
-    this.setData({
-      frequentTags: ingredientTags.frequent,
-      moreTags: ingredientTags.more
-    });
+    const tagGroups = [
+      { title: '🥩 肉类', key: 'meat', tags: ingredientTags.meat },
+      { title: '🥬 蔬菜类', key: 'vegetable', tags: ingredientTags.vegetable },
+      { title: '🦐 海鲜类', key: 'seafood', tags: ingredientTags.seafood },
+      { title: '🧂 调料/其他', key: 'seasoning', tags: ingredientTags.seasoning },
+    ];
+    this.setData({ tagGroups });
   },
 
   toggleIngredient(item) {
@@ -33,9 +34,6 @@ Page({
     this.toggleIngredient({ name, icon });
   },
 
-  toggleMore() {
-    this.setData({ showMore: !this.data.showMore });
-  },
 
   onInputChange(e) {
     this.setData({ inputValue: e.detail.value });

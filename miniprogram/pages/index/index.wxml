@@ -15,33 +15,12 @@ module.exports.includes = includes;
     <view class="header-subtitle">输入冰箱里的食材，看看能做什么菜</view>
   </view>
 
-  <!-- Frequent Tags Cloud -->
-  <view class="section">
-    <view class="section-title">常用食材</view>
+  <!-- Tag Groups by Category -->
+  <view class="section" wx:for="{{tagGroups}}" wx:for-item="group" wx:key="group.key">
+    <view class="tag-group-title">{{group.title}}</view>
     <view class="tag-cloud">
       <view
-        wx:for="{{frequentTags}}"
-        wx:key="name"
-        class="tag {{utils.includes(selectedIngredients, item.name) ? 'tag-selected' : ''}}"
-        data-name="{{item.name}}"
-        data-icon="{{item.icon}}"
-        bindtap="toggleTag"
-      >
-        <text class="tag-icon">{{item.icon}}</text>
-        <text class="tag-name">{{item.name}}</text>
-      </view>
-    </view>
-  </view>
-
-  <!-- More Ingredients (Collapsible) -->
-  <view class="section">
-    <view class="section-title more-title" bindtap="toggleMore">
-      <text>更多食材</text>
-      <text class="more-arrow {{showMore ? 'more-arrow-up' : ''}}">›</text>
-    </view>
-    <view class="tag-cloud {{showMore ? '' : 'more-hidden'}}">
-      <view
-        wx:for="{{moreTags}}"
+        wx:for="{{group.tags}}"
         wx:key="name"
         class="tag {{utils.includes(selectedIngredients, item.name) ? 'tag-selected' : ''}}"
         data-name="{{item.name}}"

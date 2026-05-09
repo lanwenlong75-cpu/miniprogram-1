@@ -49,6 +49,13 @@
   letter-spacing: 1rpx;
 }
 
+.tag-group-title {
+  font-size: 26rpx;
+  color: #8C7A6B;
+  margin-bottom: 16rpx;
+  letter-spacing: 1rpx;
+}
+
 /* ── Tag Cloud / 标签云 (3.3) ── */
 .tag-cloud {
   display: flex;
@@ -80,27 +87,6 @@
 .tag-icon {
   margin-right: 8rpx;
   font-size: 30rpx;
-}
-
-/* ── More Section — 折叠 ── */
-.more-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.more-arrow {
-  font-size: 36rpx;
-  color: #8C7A6B;
-  transition: transform 0.2s ease;
-}
-
-.more-arrow-up {
-  transform: rotate(90deg);
-}
-
-.more-hidden {
-  display: none;
 }
 
 /* ── Manual Input (3.4) ── */
