@@ -1,0 +1,73 @@
+{
+  "dangerouslySkipPermissions": true,
+  "allowedPaths": [
+    "CLAUDE.md",
+    ".claude/settings.local.json"
+  ],
+  "permissions": {
+    "allow": [
+      "Edit(.claude)",
+      "Write(.claude)",
+      "Edit(CLAUDE.md)",
+      "Write(CLAUDE.md)",
+      "Edit(项目状态.md)",
+      "Write(项目状态.md)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -ExecutionPolicy Bypass -File .claude/hooksounds/play-startup.ps1"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -ExecutionPolicy Bypass -File \"G:\\万能库\\关于我\\微信小程序\\有啥做啥\\miniprogram-1\\.claude\\hooks\\SessionStart-evolution-reminder.ps1\""
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"/g/万能库/关于我/微信小程序/有啥做啥/miniprogram-1/.claude/hooks/SessionStart-read-state.sh\"",
+            "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "bash \"/g/万能库/关于我/微信小程序/有啥做啥/miniprogram-1/.claude/hooks/SessionStart-read-context.sh\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -ExecutionPolicy Bypass -File .claude/hooksounds/play-stop.ps1"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -ExecutionPolicy Bypass -File .claude/hooks/PermissionRequest-warning.ps1"
+          }
+        ]
+      }
+    ]
+  }
+}

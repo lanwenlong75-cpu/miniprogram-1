@@ -1,0 +1,75 @@
+<wxs module="utils">
+var includes = function(list, item) {
+  for (var i = 0; i < list.length; i++) {
+    if (list[i] === item) return true;
+  }
+  return false;
+}
+module.exports.includes = includes;
+</wxs>
+
+<view class="page-wrap">
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{isEmpty}}">
+    <view class="empty-emoji">🥺</view>
+    <view class="empty-text">没找到能做的菜，试试减少一样食材</view>
+    <button class="back-btn" bindtap="onBackHome">返回首页</button>
+  </view>
+
+  <!-- 搜索结果 -->
+  <view wx:else>
+    <!-- 顶部状态栏 -->
+    <view class="result-header">
+      <text class="result-count">共找到 {{totalCount}} 道能做的菜</text>
+    </view>
+
+    <!-- 菜谱卡片列表 -->
+    <view class="card-list">
+      <view
+        wx:for="{{results}}"
+        wx:key="recipe.id"
+        class="recipe-card"
+        data-id="{{item.recipe.id}}"
+        bindtap="onRecipeTap"
+      >
+        <!-- 封面占位图 -->
+        <view class="card-cover">
+          <text class="cover-emoji">🍽️</text>
+        </view>
+
+        <!-- 卡片内容 -->
+        <view class="card-body">
+          <!-- 菜名 -->
+          <view class="card-title">{{item.recipe.name}}</view>
+
+          <!-- 分类/时间/难度标签 -->
+          <view class="card-tags">
+            <text class="card-tag">{{item.recipe.category}}</text>
+            <text class="card-tag">{{item.recipe.cookTime}}</text>
+            <text class="card-tag">{{item.recipe.difficulty}}</text>
+          </view>
+
+          <!-- 匹配度徽章 -->
+          <view class="match-badge {{item.matchRate === 100 ? 'match-full' : 'match-partial'}}">
+            {{item.matchRate}}% 匹配
+          </view>
+
+          <!-- 食材明细 -->
+          <view class="ingredient-detail">
+            <text class="detail-label">食材：</text>
+            <view class="ingredients-row">
+              <text
+                wx:for="{{item.recipe.essentialIngredients}}"
+                wx:key="name"
+                class="ingredient-item {{utils.includes(selectedNames, item.name) ? 'ingredient-have' : 'ingredient-miss'}}"
+              >
+                <text wx:if="{{utils.includes(selectedNames, item.name)}}">{{item.name}}</text>
+                <text wx:else>{{item.name}}（缺）</text>
+              </text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,29 +1,77 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="title">快速了解云开发</view>
-  <view class="top_tip">免鉴权接口调用 免部署后台 高并发</view>
-  <view class="power" wx:key="title" wx:for="{{powerList}}" wx:for-item="power">
-    <view class="power_info" data-index="{{index}}" data-type="{{ power.type }}" bindtap="onClickPowerInfo">
-      <view class="power_info_text">
-        <view class="power_info_text_title">
-          {{power.title}}
-          <view class="power_info_text_tag" wx:if="{{power.tag}}">{{power.tag}}</view>
-        </view>
-        <view class="power_info_text_tip">{{power.tip}}</view>
-      </view>
-      <image wx:if="{{!power.showItem && power.item.length}}" class="power_info_more" src="../../images/arrow.svg"></image>
-      <image wx:if="{{power.showItem && power.item.length}}" class="power_info_less" src="../../images/arrow.svg"></image>
-      <image wx:if="{{!power.item.length}}" class="power_item_icon" src="../../images/arrow.svg"></image>
-    </view>
-    <view wx:if="{{power.showItem}}">
-      <view wx:key="title" wx:for="{{power.item}}">
-        <view class="line"></view>
-        <view class="power_item" bindtap="jumpPage" data-type="{{ item.type }}" data-page="{{item.page}}">
-          <view class="power_item_title">{{item.title}}</view>
-          <image class="power_item_icon" src="../../images/arrow.svg"></image>
-        </view>
+<wxs module="utils">
+var includes = function(list, name) {
+  for (var i = 0; i < list.length; i++) {
+    if (list[i].name === name) return true;
+  }
+  return false;
+}
+module.exports.includes = includes;
+</wxs>
+
+<view class="page-wrap">
+  <!-- Header -->
+  <view class="header">
+    <view class="header-title">有什么做什么</view>
+    <view class="header-subtitle">输入冰箱里的食材，看看能做什么菜</view>
+  </view>
+
+  <!-- Tag Groups by Category -->
+  <view class="section" wx:for="{{tagGroups}}" wx:for-item="group" wx:key="group.key">
+    <view class="tag-group-title">{{group.title}}</view>
+    <view class="tag-cloud">
+      <view
+        wx:for="{{group.tags}}"
+        wx:key="name"
+        class="tag {{utils.includes(selectedIngredients, item.name) ? 'tag-selected' : ''}}"
+        data-name="{{item.name}}"
+        data-icon="{{item.icon}}"
+        bindtap="toggleTag"
+      >
+        <text class="tag-icon">{{item.icon}}</text>
+        <text class="tag-name">{{item.name}}</text>
       </view>
     </view>
   </view>
-  <cloud-tip-modal showTipProps="{{showTip}}" title="{{title}}" content="{{content}}"></cloud-tip-modal>
+
+  <!-- Manual Input -->
+  <view class="section">
+    <view class="section-title">手动添加</view>
+    <input
+      class="input-field"
+      placeholder="输入食材名称，如：牛肉"
+      value="{{inputValue}}"
+      bindinput="onInputChange"
+      bindconfirm="onInputConfirm"
+      confirm-type="done"
+    />
+  </view>
+
+  <!-- Selected Ingredients -->
+  <view class="section" wx:if="{{selectedIngredients.length > 0}}">
+    <view class="section-title">已选食材（{{selectedIngredients.length}}）</view>
+    <view class="selected-list">
+      <view
+        wx:for="{{selectedIngredients}}"
+        wx:key="name"
+        class="selected-tag"
+        data-name="{{item.name}}"
+        bindtap="removeIngredient"
+      >
+        <text wx:if="{{item.icon}}">{{item.icon}} </text>
+        <text>{{item.name}}</text>
+        <text class="selected-remove"> ✕</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Bottom Search Button -->
+  <view class="bottom-bar">
+    <button
+      class="search-btn {{selectedIngredients.length === 0 ? 'btn-disabled' : 'btn-enabled'}}"
+      disabled="{{selectedIngredients.length === 0}}"
+      bindtap="onSearchRecipes"
+    >
+      查找菜谱
+    </button>
+  </view>
 </view>
