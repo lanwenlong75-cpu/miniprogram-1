@@ -1,8 +1,8 @@
 <view class="page-wrap">
   <!-- Header -->
   <view class="header">
-    <view class="header-title">冰箱有什么？</view>
-    <view class="header-subtitle">选择食材，秒出菜谱</view>
+    <view class="header-title">有什么做什么</view>
+    <view class="header-subtitle">输入冰箱里的食材，看看能做什么菜</view>
   </view>
 
   <!-- Frequent Tags Cloud -->
