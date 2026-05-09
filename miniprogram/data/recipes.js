@@ -37,7 +37,7 @@ const recipes = [
     cookTime: '20分钟',
     difficulty: '中等',
     essentialIngredients: [
-      { name: '猪里脊肉', amount: '200g' },
+      { name: '猪肉', amount: '200g' },
       { name: '青椒', amount: '3个' },
       { name: '大蒜', amount: '3瓣' },
       { name: '生抽', amount: '1勺' },
@@ -69,8 +69,8 @@ const recipes = [
     cookTime: '20分钟',
     difficulty: '中等',
     essentialIngredients: [
-      { name: '嫩豆腐', amount: '1块' },
-      { name: '猪肉末', amount: '100g' },
+      { name: '豆腐', amount: '1块' },
+      { name: '猪肉', amount: '100g' },
       { name: '豆瓣酱', amount: '1勺' },
       { name: '花椒', amount: '少许' },
       { name: '葱', amount: '2根' },
@@ -101,7 +101,7 @@ const recipes = [
     cookTime: '30分钟',
     difficulty: '简单',
     essentialIngredients: [
-      { name: '鸡中翅', amount: '8个' },
+      { name: '鸡翅', amount: '8个' },
       { name: '可乐', amount: '1罐（330ml）' },
       { name: '生抽', amount: '2勺' },
       { name: '姜', amount: '3片' },
