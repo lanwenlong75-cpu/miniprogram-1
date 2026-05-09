@@ -1,3 +1,13 @@
+<wxs module="utils">
+var includes = function(list, item) {
+  for (var i = 0; i < list.length; i++) {
+    if (list[i] === item) return true;
+  }
+  return false;
+}
+module.exports = { includes: includes };
+</wxs>
+
 <view class="page-wrap">
   <!-- 空状态 -->
   <view class="empty-state" wx:if="{{isEmpty}}">
@@ -51,9 +61,9 @@
               <text
                 wx:for="{{item.recipe.essentialIngredients}}"
                 wx:key="name"
-                class="ingredient-item {{selectedNames.indexOf(item.name) > -1 ? 'ingredient-have' : 'ingredient-miss'}}"
+                class="ingredient-item {{utils.includes(selectedNames, item.name) ? 'ingredient-have' : 'ingredient-miss'}}"
               >
-                <text wx:if="{{selectedNames.indexOf(item.name) > -1}}">{{item.name}}</text>
+                <text wx:if="{{utils.includes(selectedNames, item.name)}}">{{item.name}}</text>
                 <text wx:else>{{item.name}}（缺）</text>
               </text>
             </view>

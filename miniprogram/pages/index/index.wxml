@@ -1,3 +1,13 @@
+<wxs module="utils">
+var includes = function(list, name) {
+  for (var i = 0; i < list.length; i++) {
+    if (list[i].name === name) return true;
+  }
+  return false;
+}
+module.exports.includes = includes;
+</wxs>
+
 <view class="page-wrap">
   <!-- Header -->
   <view class="header">
@@ -12,7 +22,7 @@
       <view
         wx:for="{{frequentTags}}"
         wx:key="name"
-        class="tag {{selectedIngredients.some(i => i.name === item.name) ? 'tag-selected' : ''}}"
+        class="tag {{utils.includes(selectedIngredients, item.name) ? 'tag-selected' : ''}}"
         data-name="{{item.name}}"
         data-icon="{{item.icon}}"
         bindtap="toggleTag"
@@ -33,7 +43,7 @@
       <view
         wx:for="{{moreTags}}"
         wx:key="name"
-        class="tag {{selectedIngredients.some(i => i.name === item.name) ? 'tag-selected' : ''}}"
+        class="tag {{utils.includes(selectedIngredients, item.name) ? 'tag-selected' : ''}}"
         data-name="{{item.name}}"
         data-icon="{{item.icon}}"
         bindtap="toggleTag"
