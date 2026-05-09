@@ -34,7 +34,6 @@
 .back-btn {
   width: 320rpx;
   height: 88rpx;
-  line-height: 88rpx;
   background: #FF8C42;
   color: #FFFFFF;
   font-size: 30rpx;
@@ -227,7 +226,6 @@
 
 .link-btn {
   height: 88rpx;
-  line-height: 88rpx;
   border-radius: 44rpx;
   font-size: 30rpx;
   font-weight: 600;
