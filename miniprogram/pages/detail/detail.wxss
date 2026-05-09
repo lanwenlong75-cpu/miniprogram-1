@@ -1,0 +1,253 @@
+/** T6: 菜谱详情页 —— 复用 T3 暖色调体系 **/
+/* 背景: #FFF8F0 暖白      */
+/* 主色: #FF8C42 暖橙      */
+/* 文字: #4A3B32 深棕灰    */
+/* 辅色: #8C7A6B 中棕      */
+/* 分割: #EDE6DD 暖灰      */
+/* 绿色(已有): #5B8C5A     */
+
+.page-wrap {
+  background: #FFF8F0;
+  min-height: 100vh;
+}
+
+/* ── 状态页（加载/未找到） ── */
+.state-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 200rpx;
+}
+
+.state-emoji {
+  font-size: 96rpx;
+  margin-bottom: 32rpx;
+}
+
+.state-text {
+  font-size: 30rpx;
+  color: #8C7A6B;
+  margin-bottom: 48rpx;
+}
+
+.back-btn {
+  width: 320rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #FF8C42;
+  color: #FFFFFF;
+  font-size: 30rpx;
+  font-weight: 600;
+  border-radius: 44rpx;
+  text-align: center;
+}
+
+/* ── 封面区 ── */
+.cover-wrap {
+  width: 100%;
+  height: 420rpx;
+  overflow: hidden;
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+}
+
+.cover-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #F5EDE0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cover-emoji {
+  font-size: 80rpx;
+}
+
+/* ── 菜名 + 标签 ── */
+.info-section {
+  padding: 32rpx 32rpx 24rpx;
+}
+
+.recipe-name {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #4A3B32;
+  line-height: 1.4;
+  margin-bottom: 16rpx;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.tag-tag {
+  font-size: 24rpx;
+  color: #8C7A6B;
+  background: #F5EDE0;
+  padding: 6rpx 20rpx;
+  border-radius: 20rpx;
+}
+
+/* ── 分割线 ── */
+.divider {
+  height: 16rpx;
+  background: #EDE6DD;
+  margin: 0 32rpx;
+  border-radius: 8rpx;
+}
+
+/* ── 通用区块 ── */
+.section {
+  padding: 28rpx 32rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #4A3B32;
+  margin-bottom: 20rpx;
+}
+
+/* ── 食材清单 ── */
+.ingredient-group {
+  margin-bottom: 20rpx;
+}
+
+.group-label {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #8C7A6B;
+  margin-bottom: 12rpx;
+}
+
+.ingredient-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.ingredient-item {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 20rpx;
+  border-radius: 16rpx;
+  gap: 10rpx;
+}
+
+.ingredient-have {
+  background: #E8F5E8;
+}
+
+.ingredient-miss {
+  background: #F0EDE8;
+}
+
+.ingredient-optional {
+  background: #FDF6EC;
+}
+
+.ingredient-icon {
+  font-size: 28rpx;
+  flex-shrink: 0;
+}
+
+.ingredient-name {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #4A3B32;
+}
+
+.ingredient-amount {
+  font-size: 24rpx;
+  color: #8C7A6B;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.optional-badge {
+  font-size: 20rpx;
+  color: #E8A840;
+  background: #FDF2E0;
+  padding: 2rpx 12rpx;
+  border-radius: 12rpx;
+  flex-shrink: 0;
+}
+
+/* ── 做法步骤 ── */
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.step-item {
+  display: flex;
+  gap: 20rpx;
+  line-height: 1.8;
+}
+
+.step-number {
+  width: 44rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  text-align: center;
+  background: #FF8C42;
+  color: #FFFFFF;
+  font-size: 24rpx;
+  font-weight: 600;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 4rpx;
+}
+
+.step-text {
+  flex: 1;
+  font-size: 28rpx;
+  color: #4A3B32;
+  line-height: 1.8;
+}
+
+/* ── 外链按钮 ── */
+.link-section {
+  padding-bottom: 40rpx;
+}
+
+.link-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.link-btn {
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.link-btn::after {
+  border: none;
+}
+
+.link-xhs {
+  background: #FF2442;
+}
+
+.link-douyin {
+  background: #1E1E1E;
+}
+
+/* ── 底部安全区 ── */
+.bottom-safe {
+  height: 48rpx;
+}

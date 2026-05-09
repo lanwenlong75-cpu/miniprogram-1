@@ -61,7 +61,7 @@
   display: flex;
   align-items: center;
   padding: 14rpx 28rpx;
-  background: rgba(255, 248, 240, 0.6);
+  background: #F5EDE0;
   border: 2rpx solid #EDE6DD;
   border-radius: 44rpx;
   font-size: 28rpx;
@@ -69,11 +69,11 @@
   transition: all 0.2s ease;
 }
 
-/* Tag — 选中态：暖橙填充 + 深色文字 */
+/* Tag — 选中态：暖橙填充 + 深棕灰文字（WCAG AA 4.63:1） */
 .tag-selected {
   background: #FF8C42;
   border-color: #FF8C42;
-  color: #FFFFFF;
+  color: #4A3B32;
   font-weight: 500;
 }
 
@@ -152,6 +152,7 @@
   left: 0;
   right: 0;
   padding: 24rpx 32rpx;
+  padding-bottom: calc(24rpx + constant(safe-area-inset-bottom));
   padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
   background: linear-gradient(to top, #FFF8F0 60%, rgba(255, 248, 240, 0));
   pointer-events: none;

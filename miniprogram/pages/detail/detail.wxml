@@ -1,0 +1,124 @@
+<view class="page-wrap">
+  <!-- 加载状态 -->
+  <view wx:if="{{!loaded}}" class="state-wrap">
+    <view class="state-text">加载中...</view>
+  </view>
+
+  <!-- 未找到菜谱 -->
+  <view wx:elif="{{notFound}}" class="state-wrap">
+    <view class="state-emoji">😕</view>
+    <view class="state-text">未找到该菜谱</view>
+    <button class="back-btn" bindtap="onBack">返回</button>
+  </view>
+
+  <!-- 菜谱详情 -->
+  <view wx:else class="detail-wrap">
+    <!-- 封面区：大图占位 -->
+    <view class="cover-wrap">
+      <image
+        wx:if="{{!coverError}}"
+        class="cover-image"
+        src="{{recipe.cover}}"
+        mode="aspectFill"
+        binderror="onCoverError"
+      />
+      <view wx:else class="cover-placeholder">
+        <text class="cover-emoji">🍽️</text>
+      </view>
+    </view>
+
+    <!-- 菜名 + 分类/时间/难度标签 -->
+    <view class="info-section">
+      <view class="recipe-name">{{recipe.name}}</view>
+      <view class="tag-row">
+        <text class="tag-tag">{{recipe.category}}</text>
+        <text class="tag-tag">{{recipe.cookTime}}</text>
+        <text class="tag-tag">{{recipe.difficulty}}</text>
+      </view>
+    </view>
+
+    <view class="divider"></view>
+
+    <!-- 食材清单 -->
+    <view class="section">
+      <view class="section-title">食材清单</view>
+
+      <!-- 必选食材 -->
+      <view class="ingredient-group">
+        <view class="group-label">必选食材</view>
+        <view class="ingredient-list">
+          <view
+            wx:for="{{recipe.essentialIngredients}}"
+            wx:key="name"
+            class="ingredient-item {{item.owned ? 'ingredient-have' : 'ingredient-miss'}}"
+          >
+            <text class="ingredient-icon">{{item.owned ? '✅' : '⚪'}}</text>
+            <text class="ingredient-name">{{item.name}}</text>
+            <text class="ingredient-amount">{{item.amount}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 可选食材 -->
+      <view wx:if="{{recipe.optionalIngredients.length > 0}}" class="ingredient-group">
+        <view class="group-label">可选食材</view>
+        <view class="ingredient-list">
+          <view
+            wx:for="{{recipe.optionalIngredients}}"
+            wx:key="name"
+            class="ingredient-item {{item.owned ? 'ingredient-have' : 'ingredient-optional'}}"
+          >
+            <text class="ingredient-icon">{{item.owned ? '✅' : '⚪'}}</text>
+            <text class="ingredient-name">{{item.name}}</text>
+            <text class="ingredient-amount">{{item.amount}}</text>
+            <text wx:if="{{!item.owned}}" class="optional-badge">可选</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="divider"></view>
+
+    <!-- 做法步骤 -->
+    <view class="section">
+      <view class="section-title">做法步骤</view>
+      <view class="steps-list">
+        <view
+          wx:for="{{recipe.steps}}"
+          wx:for-index="idx"
+          wx:key="*this"
+          class="step-item"
+        >
+          <view class="step-number">{{idx + 1}}</view>
+          <view class="step-text">{{item}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="divider"></view>
+
+    <!-- 底部外链按钮 -->
+    <view class="section link-section">
+      <view class="section-title">视频教程</view>
+      <view class="link-buttons">
+        <button
+          class="link-btn link-xhs"
+          bindtap="copyLink"
+          data-url="{{recipe.searchLinks.xiaohongshu}}"
+        >
+          小红书教程
+        </button>
+        <button
+          class="link-btn link-douyin"
+          bindtap="copyLink"
+          data-url="{{recipe.searchLinks.douyin}}"
+        >
+          抖音教程
+        </button>
+      </view>
+    </view>
+
+    <!-- 底部安全区 -->
+    <view class="bottom-safe"></view>
+  </view>
+</view>

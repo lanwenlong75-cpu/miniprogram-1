@@ -1,10 +1,66 @@
+/**
+ * app.wxss — 全局样式
+ *
+ * ─────────────────────────────────────────────
+ *  T7: 全局色板（微信 WXSS 不支持 CSS 自定义属性，
+ *       此处以注释形式定义色板，各页面直接使用色值）
+ * ─────────────────────────────────────────────
+ *
+ * 【主色调】
+ * --color-primary:       #FF8C42  暖橙（主色/按钮）
+ * --color-primary-light: #FF9A4A  暖橙亮（渐变起点）
+ * --color-primary-dark:  #FF7A22  暖橙暗（渐变终点）
+ *
+ * 【背景色】
+ * --bg-warm:      #FFF8F0  暖白（页面背景）
+ * --bg-tag:       #F5EDE0  浅暖灰（标签/占位背景）
+ * --bg-white:     #FFFFFF  纯白（卡片/输入框）
+ * --bg-disabled:  #E0D8CF  禁用背景
+ *
+ * 【文字色】
+ * --text-primary:   #4A3B32  深棕灰（主标题/正文）
+ * --text-secondary: #8C7A6B  中棕（副标题/辅助文字）
+ * --text-disabled:  #B5A89C  浅棕（禁用/占位符）
+ * --text-white:     #FFFFFF  白色（按钮文字）
+ *
+ * 【状态色】
+ * --color-success: #5B8C5A  成功绿（已有食材/100%匹配）
+ * --color-warning: #E8A840  警告暖黄（部分匹配/可选标签）
+ *
+ * 【边框/分割】
+ * --border-color: #EDE6DD  暖灰（边框/分割线）
+ *
+ * 【状态背景】
+ * --bg-have:   #E8F5E8  已有食材背景
+ * --bg-miss:   #F0EDE8  缺失食材背景
+ * --bg-option: #FDF6EC  可选食材背景
+ * --bg-badge-warning: #FDF2E0  警告徽章背景
+ *
+ * 【间距规范】
+ * --spacing-page:  32rpx  页面左右间距
+ * --spacing-gap:   16rpx  元素间小间距
+ * --spacing-card:  24rpx  卡片/区块间距
+ * --spacing-section: 40rpx  区块下边距
+ *
+ * 【圆角规范】
+ * --radius-small:  16rpx  小圆角（输入框/卡片）
+ * --radius-medium: 20rpx  中圆角（标签）
+ * --radius-large:  44rpx  大圆角（按钮/标签云）
+ *
+ * 【按钮高度】
+ * --btn-height:  88rpx  标准按钮
+ * --btn-lg:      96rpx  大按钮（搜索）
+ *
+ * ─────────────────────────────────────────────
+ */
+
 /**app.wxss**/
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-} 
+}
 
 button {
   background: initial;
@@ -20,7 +76,7 @@ button::after{
 
 
 page {
-  background: #f6f6f6;
+  background: #FFF8F0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
